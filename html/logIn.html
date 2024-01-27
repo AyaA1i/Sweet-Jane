@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sign In</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <title>Sweet Jane - Sign In</title>
+    <link rel="stylesheet" href="../css/SignIn.css" />
     <link rel="stylesheet" href="../css/all.css" />
     <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
   </head>
   <body>
-    
+    <div class="part1">
+      <div class="part-1">
+          <div class="part1-header">
+              <p>Sign In</p>
+          </div>
+          <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required autocomplete="on" autofocus>
+                <div id="emailHelp" class="form-text">Do you have an account ? <a href="#">Register</a></div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" required autocomplete="on">
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+  </div>
     <script src="../bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
     <script src="../js/script.js"></script>
   </body>
