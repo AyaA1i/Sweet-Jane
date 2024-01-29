@@ -21,7 +21,7 @@ body {
     font-family: Caveat;
     padding: 20px;
     border-radius: 10%;
-    box-shadow:  20px 0 0 0.25rem  #5f02277a ;
+    box-shadow:  20px 0 0 0.25rem  #F4768A ;
 }
 .part1-header{
     text-align: center;
@@ -47,9 +47,15 @@ body {
     text-decoration: none;
     color: #a30645;
 }
-/* needs JS */
-.form-check input:focus {
+.form-check input:checked {
     background-color: #a30645 !important;
     border: none !important;
     box-shadow: 0 0 0 0.1rem  #5f02277a !important;
+}
+.form-check input:focus {
+  border: none !important;
+  box-shadow: 0 0 0 0.1rem  #5f02277a !important;
+}
+.btn-primary:focus{
+  box-shadow: 0 0 0 0.25rem #a306458f !important;
 }

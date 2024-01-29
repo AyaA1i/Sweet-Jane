@@ -1,0 +1,39 @@
+@font-face {
+    font-family: Caveat;
+    src: url("../assests/Caveat/Caveat-Regular.woff2") format("woff2");
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Caveat;
+  margin: 0;
+  background-color: #F4768A !important;
+}
+.allProducts{
+  margin-top: 15%;
+}
+.allProducts .row{
+  margin-bottom: 5%;
+}
+.productActions{
+  overflow: auto;
+}
+.productActions .btn{
+  float: left;
+}
+.productActions .icon{
+  font-size: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: gray;
+}
+.productActions .icon{
+  float: right;
+}
+.productActions .icon:focus{
+  color: red ;
+}
