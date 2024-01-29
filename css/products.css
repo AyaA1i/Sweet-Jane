@@ -11,10 +11,10 @@
 body {
   font-family: Caveat;
   margin: 0;
-  background-color: #F4768A !important;
+  background-color: #e6ddddc5 !important;
 }
 .allProducts{
-  margin-top: 15%;
+  margin-top: 5%;
 }
 .allProducts .row{
   margin-bottom: 5%;
@@ -24,6 +24,22 @@ body {
 }
 .productActions .btn{
   float: left;
+  background-color: #cf266a !important;
+  border: none !important;
+}
+.btn-primary:hover{
+  background-color: #a306458f !important;
+}
+.btn-primary:focus{
+  box-shadow: 0 0 0 0.25rem #a306458f !important;
+}
+.card:hover{
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+.card{
+ box-shadow: 10px 5px 15px 0.2rem  #F4768A;
+
 }
 .productActions .icon{
   font-size: 20px;
@@ -34,6 +50,26 @@ body {
 .productActions .icon{
   float: right;
 }
-.productActions .icon:focus{
+.productActions .icon:hover{
   color: red ;
+}
+.price , .category{
+  font-weight: bold;
+  font-size: 12px;
+}
+.searchpart{
+  margin: auto;
+  margin-top: 10%;
+}
+.dropdown-toggle{
+  background-color: #cf266a !important;
+  color: white !important;
+}
+.searchbar:focus{
+  box-shadow: 0px 0px 10px 0.2rem  #F4768A !important;
+  border: none !important;
+}
+.dropdown-menu{
+  background-color: #f0c8cebb !important;
+  font-family: Caveat;
 }

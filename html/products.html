@@ -4,9 +4,20 @@
     <title>Sweet Jane - Products</title>
     <link rel="stylesheet" href="../css/products.css" />
     <link rel="stylesheet" href="../css/all.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
     <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
   </head>
   <body>
+    <div class="searchpart" style="width: 82%;">
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Search by</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Name</a></li>
+          <li><a class="dropdown-item" href="#">Category</a></li>
+        </ul>
+        <input type="text" class="form-control searchbar" aria-label="Text input with dropdown button">
+      </div>
+    </div>
     <div class="container allProducts">
       <div class="row">
         <div class="col">
@@ -241,7 +252,8 @@
         </div>
       </div>
     </div>
-    <script src="../bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
     <script src="../js/products.js"></script>
+    <script src="../bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
   </body>
 </html>
