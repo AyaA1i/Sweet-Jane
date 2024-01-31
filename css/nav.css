@@ -1,0 +1,54 @@
+@font-face {
+    font-family: Caveat;
+    src: url("../assests/Caveat/Caveat-Regular.woff2") format("woff2");
+  }
+
+
+.navpart .navbar{
+  font-family: Caveat;
+  margin: 0;
+  background-color: #f4768bad !important;
+}
+.brandName{
+    font-size: 30px !important;
+    font-style: italic;
+    color: white !important;
+    text-shadow: 10px 10px 3px #9b4c59 !important;
+}
+.userName{
+   margin-left: 35% !important;
+   font-size: 25px !important;
+   color: white !important;
+   font-style: italic;
+   border: dotted 2px;
+   padding: 40px;
+   border-radius: 10%;
+   box-shadow: 10px 7px 5px #9b4c59;
+   display: none;
+}
+.navbar-text{
+    margin-right: 30px !important;
+}
+.navbar-text .nav-link{
+    position:  relative !important;
+    color: white !important;
+    font-size: 25px !important;
+    margin-right: 5px;
+}
+.cartCounter{
+    background-color:#bb3047;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 3px;
+    position: absolute;
+    top : 4px;
+    right: 1px;
+    display: none;
+}
+.logOut , .cart{
+    display: none;
+}
+.cartProducts{
+    margin-right : 100px !important;
+    background-color: #f0c8cebb !important;
+}

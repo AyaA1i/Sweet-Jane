@@ -10,3 +10,17 @@ heartIcons.forEach(function (heartIcon) {
     }
   });
 });
+
+let carticon = document.querySelector('.cart');
+let cartproducts = document.querySelector('.cartProducts');
+carticon.addEventListener('click' , function(event){
+  event.preventDefault();
+  if(cartproducts.style.display === "block")
+  {
+    cartproducts.style.display = "none";
+  }
+  else
+  {
+    cartproducts.style.display = "block"
+  }
+})

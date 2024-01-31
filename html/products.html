@@ -4,21 +4,62 @@
     <title>Sweet Jane - Products</title>
     <link rel="stylesheet" href="../css/products.css" />
     <link rel="stylesheet" href="../css/all.css" />
+    <link rel="stylesheet" href="../css/nav.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
     <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
   </head>
   <body>
+    <div class="navpart">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand brandName" href="products.html" id="brandName">Sweet Jane</a>
+          <a class="navbar-brand userName" href="#" id="userName"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <span class="navbar-text">
+              
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item cart" id="cart">
+                  <a class="nav-link" href="#">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cartCounter"></span>
+                  </a>
+                  <ul class="dropdown-menu cartProducts" >
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item logIn" id="logIn">
+                  <a class="nav-link" href="logIn.html">Log In</a>
+                </li>
+                <li class="nav-item signUp" id="signUp">
+                  <a class="nav-link" href="register.html">Sign Up</a>
+                </li>
+                <li class="nav-item logOut" id="logOut">
+                  <a class="nav-link" href="#">Log Out</a>
+                </li>
+              </ul>
+            </span>
+          </div>
+        </div>
+      </nav>
+    </div>
     <div class="searchpart" style="width: 82%;">
       <div class="input-group mb-3">
         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Search by</button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu searchby">
           <li><a class="dropdown-item" href="#">Name</a></li>
           <li><a class="dropdown-item" href="#">Category</a></li>
         </ul>
-        <input type="text" class="form-control searchbar" aria-label="Text input with dropdown button">
+        <input type="text" class="form-control searchbar" aria-label="Text input with dropdown button" placeholder="Search">
       </div>
     </div>
-    <div class="container allProducts">
+    <div class="container allProducts" >
       <div class="row">
         <div class="col">
           <div class="card" style="width: 16rem;" id="item1">
@@ -253,6 +294,7 @@
       </div>
     </div>
     <script src="../js/products.js"></script>
+    <script src="../js/nav.js"></script>
     <script src="../bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 
   </body>

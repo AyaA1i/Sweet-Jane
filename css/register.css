@@ -11,17 +11,18 @@
 body {
   font-family: Caveat;
   margin: 0;
+  background-color: #e6ddddc5 !important;
 }
 .part-1{
     width: 60%;
     height: 80%;
     margin: auto;
-    margin-top: 8%;
-    background-color: #FFDFDF;
+    margin-top: 5%;
+    background-color: #fdecec;
     font-family: Caveat;
     padding: 20px;
     border-radius: 10%;
-    box-shadow:  20px 0 0 0.25rem #F4768A ;
+    box-shadow:  20px 0 20px 0.25rem  #f38b9c ;
 }
 .part1-header{
     text-align: center;
@@ -35,7 +36,7 @@ body {
     box-shadow: 0 0 0 0.1rem  #5f02277a !important;
 }
 .btn-primary{
-    background-color: #cf266a !important;
+    background-color:  #8a1141 !important;
     border: none !important;
     margin-top: 3%;
     margin-left: 45%;

@@ -24,7 +24,7 @@ body {
 }
 .productActions .btn{
   float: left;
-  background-color: #cf266a !important;
+  background-color: #8a1141 !important;
   border: none !important;
 }
 .btn-primary:hover{
@@ -62,14 +62,18 @@ body {
   margin-top: 10%;
 }
 .dropdown-toggle{
-  background-color: #cf266a !important;
+  background-color: #8a1141 !important;
   color: white !important;
+  border: none !important;
+}
+.dropdown-toggle:focus{
+  box-shadow: 0px 0px 10px 0.2rem  #F4768A !important;
 }
 .searchbar:focus{
   box-shadow: 0px 0px 10px 0.2rem  #F4768A !important;
   border: none !important;
 }
-.dropdown-menu{
+.searchby{
   background-color: #f0c8cebb !important;
   font-family: Caveat;
 }
