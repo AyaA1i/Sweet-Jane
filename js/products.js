@@ -147,7 +147,7 @@ function drawItems() {
               <p class="card-text price">Price : ${item.price}</p>
               <p class="card-text category">Category : ${item.category}</p>
               <div class="productActions">
-                <a href="#" class="btn btn-primary" onclick="addProductToCart(${item.id})">Add To Cart</a>
+                <a href="#" class="btn btn-primary addToCartBtn" onclick="addProductToCart(${item.id})" id="btn${item.id}">Add To Cart</a>
                 <i class="fa-solid fa-heart icon" id="heart"></i>
               </div>
             </div>
@@ -181,23 +181,33 @@ carticon.addEventListener('click' , function(event){
 })
 function addProductToCart(productID){
   let choosenItem = Storedproducts.find((item) => item.id === productID);
-  cartCounter.style.display = "block";
-  cartCounter.innerHTML = parseInt(cartCounter.innerHTML) + 1;
-  products.innerHTML += 
-  `
-  <li><a class="dropdown-item" href="#" id="item${choosenItem.id}">
-  <span>${choosenItem.title}</span>
-  <span><i class="fas fa-plus sign plus" onclick="addProduct(${choosenItem.id})"></i></span>
-  <span><i class="fas fa-minus sign minus" onclick="removeProduct(${choosenItem.id})"></i></span>
-  <span class="countitems">${choosenItem.quantity}</span>
-  </a></li>
-  `
+  let chosenBtn = document.querySelector(`#btn${choosenItem.id}`);
+  if(chosenBtn.innerHTML == "Add To Cart"){
+    cartCounter.style.display = "block";
+    cartCounter.innerHTML = parseInt(cartCounter.innerHTML) + 1;
+    products.innerHTML += 
+    `
+    <li><a class="dropdown-item" href="#" id="item${choosenItem.id}">
+    <span>${choosenItem.title}</span>
+    <span><i class="fas fa-plus sign plus" onclick="addProduct(${choosenItem.id})"></i></span>
+    <span><i class="fas fa-minus sign minus" onclick="removeProduct(${choosenItem.id})"></i></span>
+    <span class="countitems">${choosenItem.quantity}</span>
+    </a></li>
+    `
+  }
+  else{
+    let removedItem = document.querySelector(`#item${choosenItem.id}`);
+    removedItem.parentNode.innerHTML = "";
+  }
 }
 
 function removeProduct(productID){
   let choosenItem = document.querySelector(`#item${productID} .countitems`)
   if(parseInt(choosenItem.innerHTML) == 1){
-    choosenItem.parentElement.innerHTML = " ";
+    let chosenBtn = document.querySelector(`#btn${productID}`);
+    chosenBtn.style.backgroundColor = "#DF065D";
+    chosenBtn.innerHTML = "Add To Cart";
+    choosenItem.parentElement.innerHTML = "";
   }
   choosenItem.innerHTML = parseInt(choosenItem.innerHTML) - 1;
   cartCounter.innerHTML = parseInt(cartCounter.innerHTML) - 1;
@@ -226,3 +236,20 @@ heartIcons.forEach(function (heartIcon) {
   });
 });
 
+let addToCartBtns = document.querySelectorAll('.addToCartBtn');
+addToCartBtns.forEach(function(addToCartBtn){
+  addToCartBtn.addEventListener('click',function(event){
+  event.preventDefault();
+
+  if(addToCartBtn.innerHTML == "Add To Cart" )
+  {
+    addToCartBtn.style.backgroundColor = "#a60546" ;
+    addToCartBtn.innerHTML = "Remove From Cart";
+  }
+  else
+  {
+    addToCartBtn.style.backgroundColor = "#DF065D";
+    addToCartBtn.innerHTML = "Add To Cart";
+  }
+})
+})

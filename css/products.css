@@ -24,14 +24,14 @@ body {
 }
 .productActions .btn{
   float: left;
-  background-color: #DF065D !important;
+  background-color: #DF065D ;
   border: none !important;
 }
 .btn-primary:hover{
-  background-color: #a306458f !important;
+  background-color: #a306458f !important ;
 }
 .btn-primary:focus{
-  box-shadow: 0 0 0 0.25rem #a306458f !important;
+  box-shadow: 0 0 0 0.25rem #a306458f !important ;
 }
 .card:hover{
   transform: scale(1.05);
