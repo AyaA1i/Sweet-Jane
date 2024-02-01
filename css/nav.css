@@ -42,13 +42,41 @@
     padding: 3px;
     position: absolute;
     top : 4px;
-    right: 1px;
     display: none;
 }
 .logOut , .cart{
     display: none;
 }
 .cartProducts{
-    margin-right : 100px !important;
+    margin-left :-50px !important;
     background-color: #f0c8cebb !important;
+}
+.dropdown-item{
+    overflow: auto;
+}
+.dropdown-item:active{
+    background-color: white !important;
+}
+.sign{
+    background-color: #9b4c59;
+    color: white;
+    padding: 3px;
+    float: right;
+    margin-right: 5px;
+    font-size: 10px;
+}
+.countitems{
+    float: right;
+    margin-right: 7px;
+    font-size: 20px;
+    margin-top: -7px;
+    color:#9b4c59;
+}
+.btnToCartPage{
+    color: white !important;
+    text-align: center !important;
+    background-color: #77313c !important;
+}
+.cartProducts li{
+    width: 240px !important;
 }

@@ -24,7 +24,7 @@ body {
 }
 .productActions .btn{
   float: left;
-  background-color: #8a1141 !important;
+  background-color: #DF065D !important;
   border: none !important;
 }
 .btn-primary:hover{
@@ -62,7 +62,7 @@ body {
   margin-top: 10%;
 }
 .dropdown-toggle{
-  background-color: #8a1141 !important;
+  background-color: #DF065D !important;
   color: white !important;
   border: none !important;
 }
