@@ -6,7 +6,7 @@ let Storedproducts = [
       price: "0.13 dollar",
       category:"Lollipop",
       imageUrl : "../media/1.jpg" ,
-      quantity : 1
+      quantity : 0
   },
   {
       id:2,
@@ -14,7 +14,7 @@ let Storedproducts = [
       price: "0.13 dollar",
       category:"Lollipop",
       imageUrl : "../media/2.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:3,
@@ -22,7 +22,7 @@ let Storedproducts = [
       price: "0.38 dollar",
       category:"Lollipop",
       imageUrl : "../media/4.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:4,
@@ -30,7 +30,7 @@ let Storedproducts = [
       price: "0.13 dollar",
       category:"Lollipop",
       imageUrl : "../media/3.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:5,
@@ -38,7 +38,7 @@ let Storedproducts = [
       price: "1.38 dollar",
       category:"Bonbon",
       imageUrl : "../media/5.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
     id:6,
@@ -46,7 +46,7 @@ let Storedproducts = [
     price: "1.38 dollar",
     category:"Bonbon",
     imageUrl : "../media/6.jpg",
-    quantity : 1
+    quantity : 0
   },
   {
       id:7,
@@ -54,7 +54,7 @@ let Storedproducts = [
       price: "1.13 dollar",
       category:"Bonbon",
       imageUrl : "../media/7.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:8,
@@ -62,7 +62,7 @@ let Storedproducts = [
       price: "1.13 dollar",
       category:"Bonbon",
       imageUrl : "../media/8.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:9,
@@ -70,7 +70,7 @@ let Storedproducts = [
       price: "1.06 dollar",
       category:"Toffee",
       imageUrl : "../media/9.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:10,
@@ -78,7 +78,7 @@ let Storedproducts = [
       price: "1.06 dollar",
       category:"Toffee",
       imageUrl : "../media/10.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:11,
@@ -94,7 +94,7 @@ let Storedproducts = [
       price: "1.06 dollar",
       category:"Toffee",
       imageUrl : "../media/12.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:13,
@@ -102,7 +102,7 @@ let Storedproducts = [
       price: "1.13 dollar",
       category:"Bonbon",
       imageUrl : "../media/13.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:14,
@@ -110,7 +110,7 @@ let Storedproducts = [
       price: "1.13 dollar",
       category:"Bonbon",
       imageUrl : "../media/14.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:15,
@@ -118,7 +118,7 @@ let Storedproducts = [
       price: "1.13 dollar",
       category:"Bonbon",
       imageUrl : "../media/15.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:16,
@@ -126,7 +126,7 @@ let Storedproducts = [
       price:"1.13 dollar",
       category:"Bonbon",
       imageUrl : "../media/16.jpg",
-      quantity : 1
+      quantity : 0
   }
 ]
 function drawItems() {
@@ -163,6 +163,8 @@ function drawItems() {
 
 drawItems();
 
+let addedItems = localStorage.getItem('ProductsInCart') ? 
+JSON.parse(localStorage.getItem('ProductsInCart')) : [];
 
 let carticon = document.querySelector('#cartIcon');
 let cartproducts = document.querySelector('.cartProducts');
@@ -181,36 +183,49 @@ carticon.addEventListener('click' , function(event){
 })
 function addProductToCart(productID){
   let choosenItem = Storedproducts.find((item) => item.id === productID);
+  Storedproducts.find((item) => item.id === productID).quantity++;
   let chosenBtn = document.querySelector(`#btn${choosenItem.id}`);
   if(chosenBtn.innerHTML == "Add To Cart"){
+    let sumQ = 0;
     cartCounter.style.display = "block";
-    cartCounter.innerHTML = parseInt(cartCounter.innerHTML) + 1;
-    products.innerHTML += 
-    `
-    <li><a class="dropdown-item" href="#" id="item${choosenItem.id}">
-    <span>${choosenItem.title}</span>
-    <span><i class="fas fa-plus sign plus" onclick="addProduct(${choosenItem.id})"></i></span>
-    <span><i class="fas fa-minus sign minus" onclick="removeProduct(${choosenItem.id})"></i></span>
-    <span class="countitems">${choosenItem.quantity}</span>
-    </a></li>
-    `
+    addedItems = [...addedItems , choosenItem];
+    products.innerHTML = "";
+    addedItems.forEach(function(Item){
+      sumQ += Item.quantity;
+      products.innerHTML += 
+      `
+      <li><a class="dropdown-item" href="#" id="item${Item.id}">
+      <span>${Item.title}</span>
+      <span><i class="fas fa-plus sign plus" onclick="addProduct(${Item.id})"></i></span>
+      <span><i class="fas fa-minus sign minus" onclick="removeProduct(${Item.id})"></i></span>
+      <span class="countitems">${Item.quantity}</span>
+      </a></li>
+      `
+    })
+    cartCounter.innerHTML = sumQ;
+    localStorage.setItem('ProductsInCart' , JSON.stringify(addedItems));
   }
   else{
     let removedItem = document.querySelector(`#item${choosenItem.id}`);
-    console.log(choosenItem.quantity);
     cartCounter.innerHTML = parseInt(cartCounter.innerHTML) - choosenItem.quantity;
     removedItem.parentNode.innerHTML = "";
     if(parseInt(cartCounter.innerHTML) == 0){
       cartCounter.style.display = "none";
       cartproducts.style.display = "none";
     }
+    addedItems = addedItems.filter((item) => item.id !== choosenItem.id);
+    localStorage.setItem('ProductsInCart' , JSON.stringify(addedItems));
+    
   }
 }
 
 function removeProduct(productID){
   let choosenItem = document.querySelector(`#item${productID} .countitems`)
   Storedproducts.find((item) => item.id === productID).quantity--;
+  localStorage.setItem('ProductsInCart' , JSON.stringify(addedItems));
   if(parseInt(choosenItem.innerHTML) == 1){
+    addedItems = addedItems.filter((item) => item.id !== productID);
+    localStorage.setItem('ProductsInCart' , JSON.stringify(addedItems));
     let chosenBtn = document.querySelector(`#btn${productID}`);
     chosenBtn.style.backgroundColor = "#DF065D";
     chosenBtn.innerHTML = "Add To Cart";
@@ -227,6 +242,7 @@ function removeProduct(productID){
 function addProduct(productID){
   let choosenItem = document.querySelector(`#item${productID} .countitems`)
   Storedproducts.find((item) => item.id === productID).quantity++;
+  localStorage.setItem('ProductsInCart' , JSON.stringify(addedItems));
   choosenItem.innerHTML = parseInt(choosenItem.innerHTML) + 1;
   cartCounter.innerHTML = parseInt(cartCounter.innerHTML) + 1;
 
@@ -244,8 +260,17 @@ heartIcons.forEach(function (heartIcon) {
   });
 });
 
+
+
 let addToCartBtns = document.querySelectorAll('.addToCartBtn');
 addToCartBtns.forEach(function(addToCartBtn){
+  let productID = parseInt(addToCartBtn.id.replace('btn', ''));
+  let choosenItem = addedItems.find((item) => item.id === productID);
+  console.log(choosenItem)
+  if (choosenItem != null && choosenItem.quantity !=0) {
+    addToCartBtn.style.backgroundColor = "#a60546";
+    addToCartBtn.innerHTML = "Remove From Cart";
+  }
   addToCartBtn.addEventListener('click',function(event){
   event.preventDefault();
 
@@ -261,3 +286,22 @@ addToCartBtns.forEach(function(addToCartBtn){
   }
 })
 })
+
+
+if(addedItems.length != 0){
+  cartCounter.style.display = "block";
+  let sumQ = 0;
+  addedItems.forEach(function(Item){
+    sumQ += Item.quantity;
+    products.innerHTML += 
+    `
+    <li><a class="dropdown-item" href="#" id="item${Item.id}">
+    <span>${Item.title}</span>
+    <span><i class="fas fa-plus sign plus" onclick="addProduct(${Item.id})"></i></span>
+    <span><i class="fas fa-minus sign minus" onclick="removeProduct(${Item.id})"></i></span>
+    <span class="countitems">${Item.quantity}</span>
+    </a></li>
+    `
+  })
+  cartCounter.innerHTML = sumQ;
+}
