@@ -86,7 +86,7 @@ let Storedproducts = [
       price: "1.06 dollar",
       category:"Toffee",
       imageUrl : "../media/11.jpg",
-      quantity : 1
+      quantity : 0
   },
   {
       id:12,
@@ -213,6 +213,7 @@ function addProductToCart(productID){
       cartCounter.style.display = "none";
       cartproducts.style.display = "none";
     }
+    addedItems.find((item) => item.id == choosenItem.id).quantity = 0;
     addedItems = addedItems.filter((item) => item.id !== choosenItem.id);
     localStorage.setItem('ProductsInCart' , JSON.stringify(addedItems));
     
