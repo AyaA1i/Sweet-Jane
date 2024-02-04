@@ -58,7 +58,7 @@
     background-color: white !important;
 }
 .sign{
-    background-color: #9b4c59;
+    background-color: #DF065D;
     color: white;
     padding: 3px;
     float: right;
@@ -75,7 +75,7 @@
 .btnToCartPage{
     color: white !important;
     text-align: center !important;
-    background-color: #77313c !important;
+    background-color: #DF065D !important;
 }
 .cartProducts li{
     width: 240px !important;
