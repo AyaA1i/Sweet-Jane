@@ -203,6 +203,7 @@ function addProductToCart(productID){
       `
     })
     cartCounter.innerHTML = sumQ;
+    
     localStorage.setItem('ProductsInCart' , JSON.stringify(addedItems));
   }
   else{
