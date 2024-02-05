@@ -1,0 +1,70 @@
+@font-face {
+    font-family: Caveat;
+    src: url("../assests/Caveat/Caveat-Regular.woff2") format("woff2");
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+    font-family: Caveat;
+    margin: 0;
+    background-color: #e6ddddc5 !important;
+  }
+.Shoppedproducts .card{
+    border-top-right-radius: 2%;
+    border-bottom-right-radius: 2%;
+    box-shadow: 10px 5px 15px 0.2rem  #F4768A;
+}
+.Shoppedproducts .card img{
+    width: 80%;
+    height: 80%;
+    transform: translate(20% , 10%);
+    border-radius: 10%;
+    box-shadow: 0px 0px 15px 0.2rem  #cca7ae;
+}
+.card:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+  }
+.card-body{
+    transform: translate(5% , 0);
+}
+.productCategort , .productPrice{
+    font-weight: bold;
+    font-size: 12px;
+    display: block;
+}
+.productCategort{
+    padding-top: 2%;
+}
+.Shoppedproducts .actions {
+    overflow: auto;
+   margin-top: 10px;
+}
+.Shoppedproducts .actions .plus , 
+.Shoppedproducts .actions .minus {
+    float: left;
+    margin-top: 10px;
+}
+.Shoppedproducts .actions .countitems{
+    float: left;
+    margin-top: 2px;
+    margin-left: 6px;
+}
+.Shoppedproducts .actions .RBtn{
+    float: left;
+    margin-left: 50px;
+    font-size: 15px;
+    padding: 5px;
+    background-color: #DF065D ;
+    border: none !important;
+}
+.btn-primary:hover{
+    background-color: #a306458f !important ;
+}
+.btn-primary:focus{
+    box-shadow: 0 0 0 0.25rem #a306458f !important ;
+}

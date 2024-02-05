@@ -69,8 +69,9 @@
     float: right;
     margin-right: 7px;
     font-size: 20px;
+    font-weight: bold;
     margin-top: -7px;
-    color:#9b4c59;
+    color:rgb(80, 77, 77);
 }
 .btnToCartPage{
     color: white !important;
