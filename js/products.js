@@ -148,7 +148,7 @@ function drawItems() {
               <p class="card-text category">Category : ${item.category}</p>
               <div class="productActions">
                 <a href="#" class="btn btn-primary addToCartBtn" onclick="addProductToCart(${item.id})" id="btn${item.id}">Add To Cart</a>
-                <i class="fa-solid fa-heart icon" id="heart"></i>
+                <i class="fa-solid fa-heart heart icon" id="btn${item.id}"></i>
               </div>
             </div>
           </div>
@@ -165,6 +165,9 @@ drawItems();
 
 let addedItems = localStorage.getItem('ProductsInCart') ? 
 JSON.parse(localStorage.getItem('ProductsInCart')) : [];
+
+let favItems = localStorage.getItem('favItems') ? 
+JSON.parse(localStorage.getItem('favItems')) : [];
 
 let Shoppedproducts = document.querySelector('.Shoppedproducts');
 let carticon = document.querySelector('#cartIcon');
@@ -256,18 +259,28 @@ function addProduct(productID){
   addedItems.find((item) => item.id === productID).quantity++;
   localStorage.setItem('ProductsInCart' , JSON.stringify(addedItems));
   choosenItem.innerHTML = parseInt(choosenItem.innerHTML) + 1;
-  cartCounter.innerHTML = parseInt(cartCounter.innerHTML) + 1;
+  if(cartCounter!=null)cartCounter.innerHTML = parseInt(cartCounter.innerHTML) + 1;
 
 }
 
-const heartIcons = document.querySelectorAll('#heart');
+const heartIcons = document.querySelectorAll('.heart');
 
 heartIcons.forEach(function (heartIcon) {
+  let productID = parseInt(heartIcon.id.replace('btn', ''));
+  let favItem = favItems.find((item) => item.id === productID);
+  if(favItem != null){
+    heartIcon.style.color = 'red';
+  }
   heartIcon.addEventListener('click', function() {
+    let choosenItem = Storedproducts.find((item) => item.id === productID);
     if (heartIcon.style.color === 'gray' || heartIcon.style.color === '') {
       heartIcon.style.color = 'red';
+      favItems = [...favItems , choosenItem];
+      localStorage.setItem('favItems' , JSON.stringify(favItems));
     } else {
       heartIcon.style.color = 'gray';
+      favItems = favItems.filter((item) => item.id !== productID);
+      localStorage.setItem('favItems' , JSON.stringify(favItems));
     }
   });
 });
@@ -278,7 +291,6 @@ let addToCartBtns = document.querySelectorAll('.addToCartBtn');
 addToCartBtns.forEach(function(addToCartBtn){
   let productID = parseInt(addToCartBtn.id.replace('btn', ''));
   let choosenItem = addedItems.find((item) => item.id === productID);
-  console.log(choosenItem)
   if (choosenItem != null && choosenItem.quantity !=0) {
     addToCartBtn.style.backgroundColor = "#a60546";
     addToCartBtn.innerHTML = "Remove From Cart";
