@@ -188,6 +188,10 @@ if(carticon != null){
     }
   })
   function addProductToCart(productID){
+    if(localStorage.getItem('FirstName') == null){
+      window.location = '../html/register.html';
+      return;
+    }
     let choosenItem = Storedproducts.find((item) => item.id === productID);
     Storedproducts.find((item) => item.id === productID).quantity++;
     let chosenBtn = document.querySelector(`#btn${choosenItem.id}`);
@@ -276,6 +280,10 @@ heartIcons.forEach(function (heartIcon) {
     heartIcon.style.color = 'red';
   }
   heartIcon.addEventListener('click', function() {
+    if(localStorage.getItem('FirstName') == null){
+      window.location = '../html/register.html';
+      return;
+    }
     let choosenItem = Storedproducts.find((item) => item.id === productID);
     if (heartIcon.style.color === 'gray' || heartIcon.style.color === '') {
       heartIcon.style.color = 'red';
@@ -302,6 +310,10 @@ addToCartBtns.forEach(function(addToCartBtn){
   }
   addToCartBtn.addEventListener('click',function(event){
   event.preventDefault();
+  if(localStorage.getItem('FirstName') == null){
+    window.location = '../html/register.html';
+    return;
+  }
 
   if(addToCartBtn.innerHTML == "Add To Cart" )
   {
