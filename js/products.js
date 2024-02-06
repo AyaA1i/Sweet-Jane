@@ -267,7 +267,10 @@ const heartIcons = document.querySelectorAll('.heart');
 
 heartIcons.forEach(function (heartIcon) {
   let productID = parseInt(heartIcon.id.replace('btn', ''));
-  let favItem = favItems.find((item) => item.id === productID);
+  let favItem;
+  if(favItems != null){
+    favItem = favItems.find((item) => item != null ? item.id === productID : null);
+  }
   if(favItem != null){
     heartIcon.style.color = 'red';
   }
@@ -384,3 +387,30 @@ Rbtns.forEach(function(Rbtn){
 
   })
 })
+
+let swiperWarpper = document.querySelector('.swiper-wrapper')
+if(swiperWarpper != null){
+  if(favItems != null){
+    favItems.forEach(function(item){
+      if(item!=null){
+        swiperWarpper.innerHTML +=
+        `
+        <div class="swiper-slide"> 
+        <div class="favItem container">
+          <img src="${item.imageUrl}" alt="...">
+          <div class="itemBody">
+            <div class="itemBodytxt">
+              <p class="title">${item.title}</p>
+              <p class="price">Price : ${item.price}</p>
+            </div>
+            <div class="productActions">
+              <i class="fa-solid fa-heart heart icon" id="btn${item.id}"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+        `
+      }
+    })
+  }
+}
