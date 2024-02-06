@@ -1,5 +1,6 @@
 let submit = document.querySelector("#signIn");
 submit.addEventListener("click", function(event) {
+    
     event.preventDefault();
     let email = document.querySelector("#Email");
     let password = document.querySelector("#Password");
