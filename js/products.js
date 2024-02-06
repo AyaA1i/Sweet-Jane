@@ -129,14 +129,15 @@ let Storedproducts = [
       quantity : 0
   }
 ]
-function drawItems() {
+let searchedProducts = [];
+function drawItems(products) {
   let rows = "";
   for (let i = 0; i < 4; i++) {
     let cols = "";
     for (let j = 0; j < 4; j++) {
       let index = i * 4 + j;
-      if (index < Storedproducts.length) {
-        let item = Storedproducts[index];
+      if (index < products.length) {
+        let item = products[index];
         cols +=
           `
         <div class="col">
@@ -161,7 +162,7 @@ function drawItems() {
     if(allProducts != null)allProducts.innerHTML = rows;
 }
 
-drawItems();
+drawItems(Storedproducts);
 
 let addedItems = localStorage.getItem('ProductsInCart') ? 
 JSON.parse(localStorage.getItem('ProductsInCart')) : [];
@@ -427,4 +428,35 @@ function RemoveFromFavs(id){
     if (btn) {
       btn.closest('.swiper-slide').remove();
     }
+}
+
+let searchBybtn = document.querySelector('.searchBybtn');
+let searchbyname = document.querySelector('.searchbyname');
+let searchbycategory = document.querySelector('.searchbycategory');
+let searchbar = document.querySelector('.searchbar');
+
+if (searchbyname != null && searchbycategory != null) {
+  searchbyname.addEventListener('click', function () {
+    searchBybtn.innerHTML = 'Name';
+    if (searchbar != null) {
+      searchbar.addEventListener('input', function () {
+        searchedProducts = Storedproducts.filter((item) => item.title.toLowerCase().startsWith(searchbar.value.toLowerCase()));
+        drawItems(searchedProducts);
+      });
+    } else {
+      drawItems(Shoppedproducts);
+    }
+  });
+
+  searchbycategory.addEventListener('click', function () {
+    searchBybtn.innerHTML = 'Category';
+    if (searchbar != null) {
+      searchbar.addEventListener('input', function () {
+        searchedProducts = Storedproducts.filter((item) => item.category.toLowerCase().startsWith(searchbar.value.toLowerCase()));
+        drawItems(searchedProducts);
+      });
+    } else {
+      drawItems(Shoppedproducts);
+    }
+  });
 }
