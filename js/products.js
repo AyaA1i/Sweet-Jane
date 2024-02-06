@@ -282,9 +282,10 @@ heartIcons.forEach(function (heartIcon) {
       localStorage.setItem('favItems' , JSON.stringify(favItems));
     } else {
       heartIcon.style.color = 'gray';
-      favItems = favItems.filter((item) => item.id !== productID);
+      favItems = favItems.filter((item) =>item != null ? item.id !== productID: null);
       localStorage.setItem('favItems' , JSON.stringify(favItems));
     }
+    drawSwapper()
   });
 });
 
@@ -389,28 +390,41 @@ Rbtns.forEach(function(Rbtn){
 })
 
 let swiperWarpper = document.querySelector('.swiper-wrapper')
-if(swiperWarpper != null){
-  if(favItems != null){
-    favItems.forEach(function(item){
-      if(item!=null){
-        swiperWarpper.innerHTML +=
-        `
-        <div class="swiper-slide"> 
-        <div class="favItem container">
-          <img src="${item.imageUrl}" alt="...">
-          <div class="itemBody">
-            <div class="itemBodytxt">
-              <p class="title">${item.title}</p>
-              <p class="price">Price : ${item.price}</p>
-            </div>
-            <div class="productActions">
-              <i class="fa-solid fa-heart heart icon" id="btn${item.id}"></i>
+function drawSwapper(){
+  if(swiperWarpper != null){
+    swiperWarpper.innerHTML = "";
+    if(favItems != null){
+      favItems.forEach(function(item){
+        if(item!=null){
+          swiperWarpper.innerHTML +=
+          `
+          <div class="swiper-slide"> 
+          <div class="favItem container">
+            <img src="${item.imageUrl}" alt="...">
+            <div class="itemBody">
+              <div class="itemBodytxt">
+                <p class="title">${item.title}</p>
+                <p class="price">Price : ${item.price}</p>
+              </div>
+              <div class="productActions">
+                <i class="fa-solid fa-heart heart icon" onclick="RemoveFromFavs(${item.id})" id="btn${item.id}"></i>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-        `
-      }
-    })
+          `
+        }
+      })
+    }
   }
+}
+drawSwapper();
+function RemoveFromFavs(id){
+    let productID = parseInt(id);
+    favItems = favItems.filter((item) => item.id !== productID);
+    localStorage.setItem('favItems' , JSON.stringify(favItems));
+    let btn = document.querySelector(`#btn${id}`);
+    if (btn) {
+      btn.closest('.swiper-slide').remove();
+    }
 }
